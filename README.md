@@ -9,6 +9,16 @@ The project brings together my interest in sound, mathematics, and interactive v
 - **A space that keeps growing.** Flowers and trees spread outward, with falling glitter, little leaves, and coloured lights followed by dotted trails.
 - **Play your way.** Use a microphone or USB audio interface, orbit the garden, or try the built-in test signal.
 
+## Real audio analysis in C#
+
+The browser resamples mono input to 16 kHz and sends 512-sample PCM16 chunks to the local C# server. AudioAnalyzer.cs keeps an overlapping 2048-sample window (128 ms), analyzed every 512 samples (32 ms).
+
+1. A radix-2 FFT with a Hann window measures spectral centroid (brightness), flatness, and positive spectral flux.
+2. YIN estimates the fundamental pitch from 65 to 1100 Hz and provides a confidence score. Pitch detection uses the waveform, not a guessed FFT peak.
+3. Adaptive spectral-flux onset detection is gated by a calibrated noise floor and a cooldown. It can detect a new note even when volume does not increase.
+4. An onset is observed for another 128 ms to estimate its character. A 1 ms RMS envelope measures attack rise from 10% to 90% of its peak.
+5. Confident pitch maps to color around a pitch-class color wheel; octaves share a color. Unpitched sounds use a brightness palette. Brightness chooses the tonal flower family and tree spread. Peak loudness controls plant size; attack sharpness controls growth speed.
+
 ## Tools
 
 - **C# and ASP.NET Core** for live audio analysis, using FFT, YIN pitch estimation, and onset detection.
