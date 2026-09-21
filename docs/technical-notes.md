@@ -9,21 +9,6 @@
 - Exactly two out of each five plants, in shuffled order, get outlined leaves and a small basal rosette. Glitter streams from all new growth. Leafy plants also shed a few tiny leaves. Only temporary particles fade or are recycled.
 - Each plant's outlines are merged into at most three line batches. Placement is checked against neighboring cells. Practical limits still depend on GPU and memory: this is a growing scene, not a promise of unlimited performance.
 
-## Real audio analysis in C#
-
-The browser resamples mono input to 16 kHz and sends 512-sample PCM16 chunks to the local C# server. AudioAnalyzer.cs keeps an overlapping 2048-sample window (128 ms), analyzed every 512 samples (32 ms).
-
-1. A radix-2 FFT with a Hann window measures spectral centroid (brightness), flatness, and positive spectral flux.
-2. YIN estimates the fundamental pitch from 65 to 1100 Hz and provides a confidence score. Pitch detection uses the waveform, not a guessed FFT peak.
-3. Adaptive spectral-flux onset detection is gated by a calibrated noise floor and a cooldown. It can detect a new note even when volume does not increase.
-4. An onset is observed for another 128 ms to estimate its character. A 1 ms RMS envelope measures attack rise from 10% to 90% of its peak.
-5. Confident pitch maps to color around a pitch-class color wheel; octaves share a color. Unpitched sounds use a brightness palette. Brightness chooses the tonal flower family and tree spread. Peak loudness controls plant size; attack sharpness controls growth speed.
-
-Knock-like low transient sounds choose trees. Bright, noisy clap-like sounds choose crystal flowers. Sustained, periodic voice-like sounds choose bells, daisies, or stars according to brightness. These are transparent heuristics, not a trained sound classifier: instruments can be voice-like, noisy rooms can cause false onsets, and chords/overlapping sources can confuse pitch. Test with your own microphone and adjust sensitivity. Measured pitch and brightness plus the estimated family appear under Controls.
-
-Test signal sends three **silent synthetic inputs** (knock, clap, voiced tone) through the actual AudioWorklet, HTTP endpoint, and analyzer. It does not test the physical microphone and is never automatically started.
-
-
 ## Checks
 
 ```powershell
