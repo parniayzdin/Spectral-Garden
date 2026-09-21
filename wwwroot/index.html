@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Lilt — music garden</title><link rel="stylesheet" href="/style.css"><script type="importmap">{"imports":{"three":"/vendor/three/three.module.js"}}</script><script src="/app-taps.js?v=note-lights-2" type="module"></script></head>
+<body>
+<main class="paper">
+  <h1>Play. <em>Let it grow.</em></h1>
+  <div class="garden-stage"><canvas id="garden" aria-label="Empty 3D garden; detected taps grow branching sticks"></canvas></div>
+  <aside class="camera-window" aria-label="Your camera">
+    <div class="camera-top"><span class="camera-dot"></span><span id="camera-state">Camera off</span></div>
+    <div class="camera-view"><video id="video" autoplay playsinline muted hidden></video><div id="camera-empty"><svg width="36" height="36" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true"><rect x="4" y="8" width="17" height="16" rx="4"/><path d="m21 13 7-4v14l-7-4"/></svg></div></div>
+    <button id="camera">Enable camera</button>
+  </aside>
+  <div class="toolbar" aria-label="Garden controls">
+    <button id="listen" class="primary">♪ Listen</button>
+    <button id="view">Reset view</button>
+    <button id="reset" title="Start a new garden">New garden ↺</button>
+    <details class="settings"><summary>Controls</summary><div class="settings-popover"><label for="source">Audio input</label><select id="source"><option value="">Default input</option></select><label for="gain">Sensitivity</label><input id="gain" type="range" min="0.5" max="8" step="0.1" value="2"><small>Mic or USB audio interface</small><label class="rotate-option"><input id="rotate" type="checkbox" checked> Auto-rotate</label><button id="test" title="Send a synthetic knock, clap, and voiced tone through the C# analyzer">Test signal</button><span id="sound-state">Not listening</span><output id="analysis" aria-live="polite">Pitch · brightness · attack</output></div></details>
+    <div class="meter" aria-label="Sound level"><div id="meter-fill"></div></div>
+    <span id="mode" class="mode">Ready</span>
+  </div>
+  <div id="notice" role="status" hidden></div>
+  <p id="empty-hint">Listen, then tap your desk.</p><span class="orbit-hint">Drag to orbit · Scroll to zoom</span>
+</main>
+</body></html>
