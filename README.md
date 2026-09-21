@@ -1,8 +1,4 @@
 <h1 align="center">Melody Garden</h1>
-<p align="center"><em>Play. Let it grow.</em></p>
-
-## Why I built Melody Garden
-
 I wanted to turn music into something you can watch grow. A guitar note, a voice, or a tap on a desk becomes part of a small garden, with flowers, branching trees, and lights that drift between them.
 
 The project brings together my interest in sound, mathematics, and interactive visuals. I kept the space simple: a cream background, an optional camera beside the garden, and room for each new plant.
