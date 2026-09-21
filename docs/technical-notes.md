@@ -23,9 +23,6 @@ Knock-like low transient sounds choose trees. Bright, noisy clap-like sounds cho
 
 Test signal sends three **silent synthetic inputs** (knock, clap, voiced tone) through the actual AudioWorklet, HTTP endpoint, and analyzer. It does not test the physical microphone and is never automatically started.
 
-## Privacy and scope
-
-Raw audio now travels from the browser to the server on **your own computer**, in order to do the DSP in C#. It is processed in memory and is not written to disk or sent to a cloud service. Camera frames stay in the browser. The server binds only to 127.0.0.1. This release does not record performances, save gardens across reloads, identify people, use a database, or train a model.
 
 ## Checks
 
